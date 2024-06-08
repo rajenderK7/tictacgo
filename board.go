@@ -21,6 +21,10 @@ func newBoard(n int) *board {
 	}
 }
 
+func (b *board) reset() {
+	b.grid = make([]byte, b.size)
+}
+
 // place will place the mark on the board in the postition
 // calculated using the 'row' and 'col' co-ordinates.
 func (b *board) place(mark byte, row, col int) error {
