@@ -32,7 +32,7 @@ func (b *board) place(mark byte, row, col int) error {
 	pos := row*b.n + col
 	if pos < 0 || pos >= b.size {
 		return errors.New(INVALID_MOVE)
-	} else if b.grid[pos] == byteX && b.grid[pos] == byteO {
+	} else if b.grid[pos] == byteX || b.grid[pos] == byteO {
 		return errors.New(CELL_ALREADY_OCCUPIED)
 	}
 	b.grid[pos] = mark
