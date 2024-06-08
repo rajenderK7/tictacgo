@@ -1,8 +1,8 @@
 package tictacgo
 
 const (
-	playerX = "X"
-	playerO = "O"
+	PlayerX = "X"
+	PlayerO = "O"
 )
 
 var (
@@ -25,7 +25,7 @@ func New(n int) *Game {
 	return &Game{
 		board:  newBoard(n),
 		Winner: "",
-		Player: byteX,
+		Player: ByteX,
 	}
 }
 
@@ -37,10 +37,10 @@ func (g *Game) Play(mark string, row, col int) (*GameResult, error) {
 	}
 	if g.board.hasWin() {
 		var winner string
-		if g.Player == byteX {
-			winner = playerX
+		if g.Player == ByteX {
+			winner = PlayerX
 		} else {
-			winner = playerO
+			winner = PlayerO
 		}
 		return &GameResult{
 			IsDraw: false,
@@ -60,9 +60,9 @@ func (g *Game) Play(mark string, row, col int) (*GameResult, error) {
 }
 
 func (g *Game) switchPlayer() {
-	if g.Player == byteX {
-		g.Player = byteO
+	if g.Player == ByteX {
+		g.Player = ByteO
 	} else {
-		g.Player = byteX
+		g.Player = ByteX
 	}
 }

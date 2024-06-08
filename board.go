@@ -32,7 +32,7 @@ func (b *board) place(mark byte, row, col int) error {
 	pos := row*b.n + col
 	if pos < 0 || pos >= b.size {
 		return errors.New(INVALID_MOVE)
-	} else if b.grid[pos] == byteX || b.grid[pos] == byteO {
+	} else if b.grid[pos] == ByteX || b.grid[pos] == ByteO {
 		return errors.New(CELL_ALREADY_OCCUPIED)
 	}
 	b.grid[pos] = mark
@@ -49,7 +49,7 @@ func (b *board) hasWin() bool {
 func (b *board) isDraw() bool {
 	emptyCells := b.size
 	for _, mark := range b.grid {
-		if mark == byteX || mark == byteO {
+		if mark == ByteX || mark == ByteO {
 			emptyCells--
 		}
 	}
@@ -65,9 +65,9 @@ func (b *board) checkHorizontal() bool {
 		count := 0
 		for i+j < lvl*b.n {
 			mark := b.grid[i+j]
-			if mark == byteX {
+			if mark == ByteX {
 				count++
-			} else if mark == byteO {
+			} else if mark == ByteO {
 				count--
 			}
 			j++
@@ -87,9 +87,9 @@ func (b *board) checkVertical() bool {
 		count := 0
 		for j := 0; j < b.n; j++ {
 			mark := b.grid[i+j*b.n]
-			if mark == byteX {
+			if mark == ByteX {
 				count++
-			} else if mark == byteO {
+			} else if mark == ByteO {
 				count--
 			}
 		}
@@ -106,14 +106,14 @@ func (b *board) checkDiagonal() bool {
 	for i := range b.n {
 		markMainDiag := b.grid[i*b.n+i]
 		markAntiDiag := b.grid[i*b.n+(b.n-1-i)]
-		if markMainDiag == byteX {
+		if markMainDiag == ByteX {
 			countMainDiag++
-		} else if markMainDiag == byteO {
+		} else if markMainDiag == ByteO {
 			countMainDiag--
 		}
-		if markAntiDiag == byteX {
+		if markAntiDiag == ByteX {
 			countAntiDiag++
-		} else if markAntiDiag == byteO {
+		} else if markAntiDiag == ByteO {
 			countAntiDiag--
 		}
 		if countMainDiag == -b.n || countMainDiag == b.n {
