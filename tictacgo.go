@@ -6,8 +6,8 @@ const (
 )
 
 var (
-	byteX byte = 'X'
-	byteO byte = 'O'
+	ByteX byte = 'X'
+	ByteO byte = 'O'
 )
 
 type Game struct {
