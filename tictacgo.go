@@ -1,5 +1,9 @@
 package tictacgo
 
+import (
+	"fmt"
+)
+
 const (
 	PlayerX = "X"
 	PlayerO = "O"
@@ -31,6 +35,11 @@ func New(n int) *Game {
 
 func (g *Game) Play(mark string, row, col int) (*GameResult, error) {
 	markByte := mark[0]
+
+	if markByte != g.Player {
+		return nil, fmt.Errorf("expected player %s to make the move", string(g.Player))
+	}
+
 	err := g.board.place(markByte, row, col)
 	if err != nil {
 		return nil, err
