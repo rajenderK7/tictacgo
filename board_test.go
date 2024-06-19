@@ -79,7 +79,7 @@ func TestCheckHorizontal(t *testing.T) {
 	if got != want {
 		t.Errorf("Expected %v, got %v", got, want)
 	}
-	b.reset()
+	b.Reset()
 	b.place(ByteO, 0, 0)
 	b.place(ByteO, 0, 1)
 	b.place(ByteX, 0, 2)
@@ -102,7 +102,7 @@ func TestCheckVertical(t *testing.T) {
 	if got != want {
 		t.Errorf("Expected %v, got %v", got, want)
 	}
-	b.reset()
+	b.Reset()
 	b.place(ByteO, 0, 0)
 	b.place(ByteO, 1, 0)
 	b.place(ByteX, 2, 0)
@@ -124,7 +124,7 @@ func TestCheckDiagonal(t *testing.T) {
 	if got != want {
 		t.Errorf("Expected %v, got %v", got, want)
 	}
-	b.reset()
+	b.Reset()
 	b.place(ByteX, 0, 2)
 	b.place(ByteX, 1, 1)
 	b.place(ByteX, 2, 0)
@@ -133,7 +133,7 @@ func TestCheckDiagonal(t *testing.T) {
 	if got != want {
 		t.Errorf("Expected %v, got %v", got, want)
 	}
-	b.reset()
+	b.Reset()
 	b.place(ByteX, 0, 2)
 	b.place(ByteO, 1, 1)
 	b.place(ByteX, 2, 0)
@@ -141,5 +141,14 @@ func TestCheckDiagonal(t *testing.T) {
 	want = false
 	if got != want {
 		t.Errorf("Expected %v, got %v", got, want)
+	}
+}
+
+func TestReset(t *testing.T) {
+	b := newBoard(3)
+	b.place(ByteO, 0, 0)
+	b.Reset()
+	if b.grid[0] == ByteO {
+		t.Errorf("Expected %s, got %v", "empty byte", b.grid[0])
 	}
 }
