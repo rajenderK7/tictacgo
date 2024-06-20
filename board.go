@@ -21,7 +21,7 @@ func newBoard(n int) *board {
 	}
 }
 
-func (b *board) Reset() {
+func (b *board) reset() {
 	b.grid = make([]byte, b.size)
 }
 

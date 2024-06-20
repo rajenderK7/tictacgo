@@ -68,6 +68,10 @@ func (g *Game) Play(mark string, row, col int) (*GameResult, error) {
 	}, nil
 }
 
+func (g *Game) Reset() {
+	g.board.reset()
+}
+
 func (g *Game) switchPlayer() {
 	if g.Player == ByteX {
 		g.Player = ByteO
